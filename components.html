@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware Components &amp; System Architecture — AgriVision 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="tech-grid-bg"></div>
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand-cluster">
+        <a href="index.html" class="brand-link">
+          <div class="logo-shield">
+            <svg viewBox="0 0 36 36" fill="none" class="rover-logo" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="10" fill="url(#brandGrad)" />
+              <path d="M18 7C12.5 7 8 11.5 8 17C8 22.5 13 27 18 29C23 27 28 22.5 28 17C28 11.5 23.5 7 18 7Z" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M18 12V24M12 18H24" stroke="#34d399" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="18" cy="18" r="3.5" fill="#10b981"/>
+              <circle cx="10" cy="27" r="2" fill="#047857"/>
+              <circle cx="26" cy="27" r="2" fill="#047857"/>
+              <defs>
+                <linearGradient id="brandGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#064e3b" />
+                  <stop offset="1" stop-color="#022c22" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="pulse-indicator live-pulse"></div>
+          </div>
+        </a>
+        <div class="brand-text">
+          <div class="brand-title-wrap">
+            <h1 class="brand-title">AGRIVISION</h1>
+            <span class="hub-tag">COMPONENT INVENTORY</span>
+          </div>
+          <p class="tagline">Smart Farming. A Sustainable Future.</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-links-cluster">
+        <a href="index.html" class="nav-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9"/>
+            <rect x="14" y="3" width="7" height="5"/>
+            <rect x="14" y="12" width="7" height="9"/>
+            <rect x="3" y="16" width="7" height="5"/>
+          </svg>
+          <span>Telemetry Hub</span>
+        </a>
+        <a href="rover-3d.html" class="nav-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+          <span>3D Rover Model</span>
+        </a>
+        <a href="components.html" class="nav-tab active">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"/>
+            <line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/>
+            <line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+          <span>Component List</span>
+        </a>
+      </nav>
+
+      <!-- School Credits -->
+      <div class="school-credits-pill">
+        <div class="school-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="school-details">
+          <div class="school-name">DAV Public School, Jyoti Nagar, East of Loni Road</div>
+          <div class="team-authors">Innovators: <strong>Divyansh Arora</strong> &amp; <strong>Neerav Kaushik</strong></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-wrapper">
+    <!-- Header with spacious layout -->
+    <section class="page-intro-header card-glass section-spacer">
+      <div class="page-intro-content">
+        <div class="system-intro-tag">
+          <span class="badge-icon">📋</span>
+          <span>Hardware Architecture &amp; Bill of Materials</span>
+        </div>
+        <h2 class="page-title">AgriVision 2.0 — Complete Hardware Component Inventory</h2>
+        <p class="page-subtitle">
+          Comprehensive inventory and technical data sheets for all microcontrollers, agricultural sensors, vision modules, power distribution circuits, and drive actuators powering the AgriVision Rover.
+        </p>
+      </div>
+
+      <div class="inventory-summary-strip">
+        <div class="inv-stat">
+          <span class="inv-stat-num highlight-green">12</span>
+          <span class="inv-stat-label">Core Modules</span>
+        </div>
+        <div class="inv-stat">
+          <span class="inv-stat-num highlight-cyan">ESP32</span>
+          <span class="inv-stat-label">Master Architecture</span>
+        </div>
+        <div class="inv-stat">
+          <span class="inv-stat-num highlight-emerald">3.3V / 5V / 12V</span>
+          <span class="inv-stat-label">Power Rails</span>
+        </div>
+        <div class="inv-stat">
+          <span class="inv-stat-num highlight-amber">Blynk IoT</span>
+          <span class="inv-stat-label">Cloud Interface</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Component Category 1: Processing, Vision & IoT -->
+    <section class="component-category-block section-spacer">
+      <div class="category-header">
+        <div class="category-title-cluster">
+          <div class="category-icon-box">⚡</div>
+          <div>
+            <h3 class="category-title">1. Processing, Wireless Telemetry &amp; Vision</h3>
+            <p class="category-subtitle">Master Computing and Image Streaming Systems</p>
+          </div>
+        </div>
+        <span class="category-badge">PROCESSING CORE</span>
+      </div>
+
+      <div class="components-grid">
+        <!-- Component 1: ESP32 -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">MCU-01</div>
+            <span class="comp-tag core-tag">Core Microcontroller</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <rect x="15" y="10" width="90" height="50" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+              <rect x="35" y="16" width="50" height="38" rx="2" fill="#374151" stroke="#9ca3af" stroke-width="1"/>
+              <text x="60" y="38" fill="#e5e7eb" font-size="8" font-family="monospace" text-anchor="middle">ESP-WROOM-32</text>
+              <circle cx="25" cy="22" r="2.5" fill="#34d399"/>
+              <circle cx="25" cy="30" r="2.5" fill="#ef4444"/>
+              <line x1="15" y1="18" x2="10" y2="18" stroke="#d1d5db" stroke-width="2"/>
+              <line x1="15" y1="26" x2="10" y2="26" stroke="#d1d5db" stroke-width="2"/>
+              <line x1="15" y1="34" x2="10" y2="34" stroke="#d1d5db" stroke-width="2"/>
+              <line x1="15" y1="42" x2="10" y2="42" stroke="#d1d5db" stroke-width="2"/>
+              <line x1="105" y1="18" x2="110" y2="18" stroke="#d1d5db" stroke-width="2"/>
+              <line x1="105" y1="26" x2="110" y2="26" stroke="#d1d5db" stroke-width="2"/>
+              <line x1="105" y1="34" x2="110" y2="34" stroke="#d1d5db" stroke-width="2"/>
+              <line x1="105" y1="42" x2="110" y2="42" stroke="#d1d5db" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">ESP32 DevKit v1 (30-Pin)</h4>
+            <p class="comp-role">Master field robot controller. Handles telemetry polling, sensor aggregation, Wi-Fi SoftAP server, Blynk IoT cloud link, and motor H-bridge PWM.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>CPU:</span> <strong>Tensilica Xtensa Dual-Core 240MHz</strong></div>
+              <div class="comp-spec-row"><span>Operating Voltage:</span> <strong>3.3V Logic (5V MicroUSB / Vin)</strong></div>
+              <div class="comp-spec-row"><span>Connectivity:</span> <strong>Wi-Fi 802.11 b/g/n &amp; BLE 4.2</strong></div>
+              <div class="comp-spec-row"><span>ADC Resolution:</span> <strong>12-bit (0 – 4095 range)</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 2: ESP32-CAM -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">CAM-01</div>
+            <span class="comp-tag vision-tag">Optical Surveillance</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <rect x="20" y="8" width="80" height="54" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+              <rect x="35" y="16" width="50" height="38" rx="2" fill="#1e293b"/>
+              <circle cx="60" cy="35" r="14" fill="#111827" stroke="#38bdf8" stroke-width="1.5"/>
+              <circle cx="60" cy="35" r="7" fill="#0284c7"/>
+              <circle cx="63" cy="32" r="2.5" fill="#ffffff" opacity="0.8"/>
+              <rect x="90" y="24" width="6" height="6" fill="#f59e0b"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">ESP32-CAM (OV2640 Module)</h4>
+            <p class="comp-role">Autonomous optical inspection camera. Streams real-time MJPEG video on local IP Port 81 for live crop health and furrow surveillance.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Camera Sensor:</span> <strong>OmniVision OV2640 (2 Megapixel)</strong></div>
+              <div class="comp-spec-row"><span>Image Array:</span> <strong>1600 × 1200 UXGA</strong></div>
+              <div class="comp-spec-row"><span>Streaming Port:</span> <strong>TCP Port 81 (/stream)</strong></div>
+              <div class="comp-spec-row"><span>Flash Light:</span> <strong>Onboard Bright White LED</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Component Category 2: Agricultural Sensor Suite -->
+    <section class="component-category-block section-spacer">
+      <div class="category-header">
+        <div class="category-title-cluster">
+          <div class="category-icon-box">🌿</div>
+          <div>
+            <h3 class="category-title">2. Agricultural Environmental &amp; Soil Sensors</h3>
+            <p class="category-subtitle">Microclimate, Gas Analysis &amp; Subsurface Moisture</p>
+          </div>
+        </div>
+        <span class="category-badge">SENSOR SUITE</span>
+      </div>
+
+      <div class="components-grid">
+        <!-- Component 3: DHT11 -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">SNS-01</div>
+            <span class="comp-tag sensor-tag">Microclimate</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <rect x="35" y="10" width="50" height="48" rx="4" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="45" y1="20" x2="75" y2="20" stroke="#bae6fd" stroke-width="2"/>
+              <line x1="45" y1="28" x2="75" y2="28" stroke="#bae6fd" stroke-width="2"/>
+              <line x1="45" y1="36" x2="75" y2="36" stroke="#bae6fd" stroke-width="2"/>
+              <line x1="45" y1="44" x2="75" y2="44" stroke="#bae6fd" stroke-width="2"/>
+              <rect x="50" y="58" width="5" height="10" fill="#9ca3af"/>
+              <rect x="60" y="58" width="5" height="10" fill="#9ca3af"/>
+              <rect x="70" y="58" width="5" height="10" fill="#9ca3af"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">DHT11 Temperature &amp; Humidity Sensor</h4>
+            <p class="comp-role">Measures ambient air temperature and relative humidity directly above the crop canopy.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Temp Range:</span> <strong>0°C to 50°C (±2°C accuracy)</strong></div>
+              <div class="comp-spec-row"><span>Humidity Range:</span> <strong>20% to 90% RH (±5% accuracy)</strong></div>
+              <div class="comp-spec-row"><span>Interface:</span> <strong>Single-Bus Digital (ESP32 GPIO 4)</strong></div>
+              <div class="comp-spec-row"><span>Starting Baseline:</span> <strong>26.5°C / 58%</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 4: MQ2 Gas Sensor -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">SNS-02</div>
+            <span class="comp-tag sensor-tag">Combustible Gas</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <circle cx="60" cy="32" r="22" fill="#374151" stroke="#f59e0b" stroke-width="1.5"/>
+              <circle cx="60" cy="32" r="16" fill="#1f2937" stroke="#9ca3af" stroke-dasharray="2,2"/>
+              <circle cx="60" cy="32" r="8" fill="#d97706"/>
+              <rect x="35" y="54" width="50" height="8" rx="2" fill="#065f46"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">MQ2 Combustible Gas &amp; Smoke Sensor</h4>
+            <p class="comp-role">Detects methane, LPG, and field fire smoke. Protects agricultural fields from brushfires and equipment fuel leaks.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Detection:</span> <strong>LPG, Methane, Smoke, Alcohol</strong></div>
+              <div class="comp-spec-row"><span>Sensitivity:</span> <strong>300 to 10000 ppm</strong></div>
+              <div class="comp-spec-row"><span>Analog Pin:</span> <strong>ESP32 GPIO 32 (ADC1_CH4)</strong></div>
+              <div class="comp-spec-row"><span>Starting Baseline:</span> <strong>312 ADC</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 5: MQ135 Air Quality Sensor -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">SNS-03</div>
+            <span class="comp-tag sensor-tag">Air Quality</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <circle cx="60" cy="32" r="22" fill="#374151" stroke="#a855f7" stroke-width="1.5"/>
+              <circle cx="60" cy="32" r="16" fill="#1f2937" stroke="#9ca3af" stroke-dasharray="2,2"/>
+              <circle cx="60" cy="32" r="8" fill="#7c3aed"/>
+              <rect x="35" y="54" width="50" height="8" rx="2" fill="#065f46"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">MQ135 Hazardous Air Quality Sensor</h4>
+            <p class="comp-role">Monitors ammonia gas from fertilizer breakdown, nitrogen oxides, carbon dioxide, and air pollution in agricultural greenhouses and fields.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Gases:</span> <strong>NH3, NOx, Alcohol, Benzene, Smoke, CO2</strong></div>
+              <div class="comp-spec-row"><span>Concentration:</span> <strong>10 to 1000 ppm</strong></div>
+              <div class="comp-spec-row"><span>Analog Pin:</span> <strong>ESP32 GPIO 35 (ADC1_CH7)</strong></div>
+              <div class="comp-spec-row"><span>Starting Baseline:</span> <strong>428 ADC</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 6: Capacitive Soil Moisture Sensor v1.2 -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">SNS-04</div>
+            <span class="comp-tag live-tag">Live Hardware</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <rect x="25" y="10" width="70" height="14" rx="2" fill="#064e3b" stroke="#10b981"/>
+              <rect x="42" y="24" width="14" height="42" fill="#065f46" stroke="#10b981"/>
+              <rect x="64" y="24" width="14" height="42" fill="#065f46" stroke="#10b981"/>
+              <line x1="49" y1="28" x2="49" y2="60" stroke="#f59e0b" stroke-width="1.5"/>
+              <line x1="71" y1="28" x2="71" y2="60" stroke="#f59e0b" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">Capacitive Soil Moisture Sensor v1.2</h4>
+            <p class="comp-role">Corrosion-resistant soil moisture probe extending down into root-zone soil. Measures volumetric moisture without metal electrolysis degradation.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Sensor Tech:</span> <strong>Capacitive Dielectric Permittivity</strong></div>
+              <div class="comp-spec-row"><span>Operating Voltage:</span> <strong>3.3V to 5.5V DC</strong></div>
+              <div class="comp-spec-row"><span>Hardware Pin:</span> <strong>ESP32 GPIO 34 (ADC1_CH6)</strong></div>
+              <div class="comp-spec-row"><span>IoT Link:</span> <strong>Blynk Virtual Pin V1</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Component Category 3: Obstacle Avoidance, Motors & Power -->
+    <section class="component-category-block section-spacer">
+      <div class="category-header">
+        <div class="category-title-cluster">
+          <div class="category-icon-box">🚜</div>
+          <div>
+            <h3 class="category-title">3. Obstacle Avoidance, Locomotion &amp; Power System</h3>
+            <p class="category-subtitle">Sonar Spatial Sensing, 4WD Motor Actuation &amp; Solar Battery</p>
+          </div>
+        </div>
+        <span class="category-badge">ROVER HARDWARE</span>
+      </div>
+
+      <div class="components-grid">
+        <!-- Component 7: Dual HC-SR04 -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">ACT-01</div>
+            <span class="comp-tag sonar-tag">Spatial Sonar</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <rect x="20" y="20" width="80" height="30" rx="3" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5"/>
+              <circle cx="42" cy="35" r="10" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5"/>
+              <circle cx="78" cy="35" r="10" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1.5"/>
+              <circle cx="42" cy="35" r="4" fill="#334155"/>
+              <circle cx="78" cy="35" r="4" fill="#334155"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">Dual HC-SR04 Ultrasonic Sensors (x2)</h4>
+            <p class="comp-role">Mounted on Port and Starboard front bumpers. Measures obstacle proximity in centimeters to prevent furrow collisions.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Range:</span> <strong>2 cm – 400 cm (±3mm accuracy)</strong></div>
+              <div class="comp-spec-row"><span>Sensor 1 (Port):</span> <strong>Trig: GPIO 5 • Echo: GPIO 18 (74 cm)</strong></div>
+              <div class="comp-spec-row"><span>Sensor 2 (Stbd):</span> <strong>Trig: GPIO 19 • Echo: GPIO 21 (96 cm)</strong></div>
+              <div class="comp-spec-row"><span>Frequency:</span> <strong>40 kHz Ultrasound Burst</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 8: L298N Motor Driver -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">ACT-02</div>
+            <span class="comp-tag motor-tag">Motor Driver</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <rect x="25" y="10" width="70" height="50" rx="4" fill="#991b1b" stroke="#f87171" stroke-width="1.5"/>
+              <rect x="42" y="14" width="36" height="24" fill="#1f2937" stroke="#4b5563"/>
+              <line x1="48" y1="14" x2="48" y2="38" stroke="#9ca3af"/>
+              <line x1="56" y1="14" x2="56" y2="38" stroke="#9ca3af"/>
+              <line x1="64" y1="14" x2="64" y2="38" stroke="#9ca3af"/>
+              <rect x="30" y="46" width="60" height="10" fill="#15803d"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">L298N Dual H-Bridge Motor Driver</h4>
+            <p class="comp-role">Drives four geared DC locomotion motors with independent directional and PWM speed control from ESP32 GPIOs.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Driver Chip:</span> <strong>L298N Dual H-Bridge IC</strong></div>
+              <div class="comp-spec-row"><span>Motor Voltage:</span> <strong>7V – 12V DC</strong></div>
+              <div class="comp-spec-row"><span>Peak Current:</span> <strong>2A per bridge (continuous 1.2A)</strong></div>
+              <div class="comp-spec-row"><span>Controls:</span> <strong>IN1, IN2, IN3, IN4, ENA, ENB</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 9: 3S Battery & BMS -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">PWR-01</div>
+            <span class="comp-tag pwr-tag">Power Subsystem</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <rect x="25" y="14" width="70" height="42" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+              <rect x="32" y="20" width="16" height="30" rx="2" fill="#10b981"/>
+              <rect x="52" y="20" width="16" height="30" rx="2" fill="#10b981"/>
+              <rect x="72" y="20" width="16" height="30" rx="2" fill="#10b981"/>
+              <rect x="95" y="28" width="5" height="14" fill="#d1d5db"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">3S 18650 Li-ion Battery &amp; LM2596 Buck</h4>
+            <p class="comp-role">Rechargeable high-current field battery with Battery Management System (BMS) for overcurrent protection, stepped down to 5V via LM2596.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Nominal Voltage:</span> <strong>11.1V (12.6V Fully Charged)</strong></div>
+              <div class="comp-spec-row"><span>Capacity:</span> <strong>2600 mAh (28.8 Wh)</strong></div>
+              <div class="comp-spec-row"><span>Step-Down Buck:</span> <strong>LM2596 DC-DC (Outputs 5.0V 3A)</strong></div>
+              <div class="comp-spec-row"><span>Field Runtime:</span> <strong>3.5+ Hours Continuous Operation</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 10: Monocrystalline Solar Panel -->
+        <div class="component-card card-glass">
+          <div class="comp-card-top">
+            <div class="comp-id-badge">PWR-02</div>
+            <span class="comp-tag pwr-tag">Renewable Energy</span>
+          </div>
+          <div class="comp-illustration-box">
+            <svg viewBox="0 0 120 70" class="comp-svg">
+              <rect x="20" y="12" width="80" height="46" rx="3" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="40" y1="12" x2="40" y2="58" stroke="#bae6fd" stroke-width="1"/>
+              <line x1="60" y1="12" x2="60" y2="58" stroke="#bae6fd" stroke-width="1"/>
+              <line x1="80" y1="12" x2="80" y2="58" stroke="#bae6fd" stroke-width="1"/>
+              <line x1="20" y1="35" x2="100" y2="35" stroke="#bae6fd" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="comp-details">
+            <h4 class="comp-name">6V 2W Monocrystalline Solar Panel</h4>
+            <p class="comp-role">Roof-mounted photovoltaic panel providing auxiliary trickle charging under outdoor sunlight during crop surveillance missions.</p>
+            <div class="comp-specs-list">
+              <div class="comp-spec-row"><span>Peak Voltage:</span> <strong>6.0V DC</strong></div>
+              <div class="comp-spec-row"><span>Peak Current:</span> <strong>330 mA</strong></div>
+              <div class="comp-spec-row"><span>Cell Efficiency:</span> <strong>19.5% Monocrystalline Silicon</strong></div>
+              <div class="comp-spec-row"><span>Protection:</span> <strong>1N5819 Schottky Reverse Diode</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Master Pin Connection & Wiring Matrix Table (Spacious) -->
+    <section class="pinout-table-section card-glass section-spacer">
+      <div class="block-header">
+        <div class="block-title-cluster">
+          <div class="category-icon-box">🔌</div>
+          <div>
+            <h3 class="block-title">ESP32 Master GPIO Wiring Matrix</h3>
+            <p class="block-subtitle">Complete Electrical Interconnect Map</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="specs-table-wrapper">
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>ESP32 GPIO</th>
+              <th>Peripheral Component</th>
+              <th>Signal Type</th>
+              <th>Operating Voltage</th>
+              <th>Functional Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pin-badge">GPIO 4</span></td>
+              <td><strong>DHT11 Microclimate Sensor</strong></td>
+              <td>Digital Single-Bus</td>
+              <td>3.3V</td>
+              <td>Ambient air temperature &amp; relative humidity data line.</td>
+            </tr>
+            <tr>
+              <td><span class="pin-badge">GPIO 32</span></td>
+              <td><strong>MQ2 Combustible Gas Sensor</strong></td>
+              <td>Analog (ADC1_CH4)</td>
+              <td>5.0V (Vcc) / 3.3V (Vout)</td>
+              <td>Detects combustible hydrocarbon gas, methane, and smoke.</td>
+            </tr>
+            <tr>
+              <td><span class="pin-badge">GPIO 35</span></td>
+              <td><strong>MQ135 Air Quality Sensor</strong></td>
+              <td>Analog (ADC1_CH7)</td>
+              <td>5.0V (Vcc) / 3.3V (Vout)</td>
+              <td>Monitors agricultural fertilizer ammonia and air quality index.</td>
+            </tr>
+            <tr>
+              <td><span class="pin-badge highlight-pin">GPIO 34</span></td>
+              <td><strong>Capacitive Soil Moisture Probe</strong></td>
+              <td>Analog (ADC1_CH6)</td>
+              <td>3.3V</td>
+              <td>Live subsurface volumetric water content reading (Blynk V1).</td>
+            </tr>
+            <tr>
+              <td><span class="pin-badge">GPIO 5 &amp; 18</span></td>
+              <td><strong>HC-SR04 Sonar 1 (Port)</strong></td>
+              <td>Digital Output &amp; Input</td>
+              <td>5.0V (Level shifted)</td>
+              <td>Trigger pulse (GPIO 5) and Echo return time (GPIO 18).</td>
+            </tr>
+            <tr>
+              <td><span class="pin-badge">GPIO 19 &amp; 21</span></td>
+              <td><strong>HC-SR04 Sonar 2 (Starboard)</strong></td>
+              <td>Digital Output &amp; Input</td>
+              <td>5.0V (Level shifted)</td>
+              <td>Trigger pulse (GPIO 19) and Echo return time (GPIO 21).</td>
+            </tr>
+            <tr>
+              <td><span class="pin-badge">GPIO 12, 13, 14, 27</span></td>
+              <td><strong>L298N Motor Driver Inputs</strong></td>
+              <td>Digital PWM (LEDC)</td>
+              <td>3.3V Logic</td>
+              <td>Differential skid steering and speed modulation for 4 motors.</td>
+            </tr>
+            <tr>
+              <td><span class="pin-badge">Port 81 (TCP)</span></td>
+              <td><strong>ESP32-CAM OV2640 Module</strong></td>
+              <td>Wi-Fi MJPEG Stream</td>
+              <td>5.0V Power</td>
+              <td>Real-time visual optical feed streamed over HTTP local subnet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Navigation Footer CTA -->
+    <div class="page-nav-cta section-spacer">
+      <a href="rover-3d.html" class="action-btn primary-btn">
+        <span>Explore 3D Rover Model &rarr;</span>
+      </a>
+      <a href="index.html" class="action-btn secondary-btn">
+        <span>Return to Telemetry Hub</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="system-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand-meta">
+          <h4 class="footer-title">AGRI-VISION | SMART AGRICULTURE ROVER</h4>
+          <p class="footer-motto">"Technology for Farmers. Innovation for Tomorrow."</p>
+        </div>
+        <div class="footer-authors-box">
+          <div class="footer-school">DAV Public School, Jyoti Nagar, East of Loni Road</div>
+          <div class="footer-team">Developed by <strong>DIVYANSH ARORA &amp; NEERAV KAUSHIK</strong></div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-note-row">
+        <p class="footer-data-note">
+          <strong>Data note:</strong> Some dashboard readings are software-generated simulations. Soil moisture and camera information are displayed from connected hardware.
+        </p>
+        <div class="footer-status-pill">
+          <span>ESP32 • Blynk IoT • DHT11 • MQ2 • MQ135 • HC-SR04 • OV2640</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

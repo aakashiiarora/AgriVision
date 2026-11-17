@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGRIVISION — Smart Agriculture Telemetry Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient High-Tech Atmosphere -->
+  <div class="tech-grid-bg"></div>
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Primary Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand-cluster">
+        <div class="logo-shield">
+          <svg viewBox="0 0 36 36" fill="none" class="rover-logo" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="10" fill="url(#brandGrad)" />
+            <path d="M18 7C12.5 7 8 11.5 8 17C8 22.5 13 27 18 29C23 27 28 22.5 28 17C28 11.5 23.5 7 18 7Z" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M18 12V24M12 18H24" stroke="#34d399" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="18" cy="18" r="3.5" fill="#10b981"/>
+            <circle cx="10" cy="27" r="2" fill="#047857"/>
+            <circle cx="26" cy="27" r="2" fill="#047857"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#064e3b" />
+                <stop offset="1" stop-color="#022c22" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="pulse-indicator live-pulse"></div>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-wrap">
+            <h1 class="brand-title">AGRIVISION</h1>
+            <span class="hub-tag">TELEMETRY HUB 2.0</span>
+          </div>
+          <p class="tagline">Smart Farming. A Sustainable Future.</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs (Dedicated 3D Rover Model & Component List Pages) -->
+      <nav class="nav-links-cluster">
+        <a href="index.html" class="nav-tab active">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9"/>
+            <rect x="14" y="3" width="7" height="5"/>
+            <rect x="14" y="12" width="7" height="9"/>
+            <rect x="3" y="16" width="7" height="5"/>
+          </svg>
+          <span>Telemetry Hub</span>
+        </a>
+        <a href="rover-3d.html" class="nav-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+          <span>3D Rover Model</span>
+        </a>
+        <a href="components.html" class="nav-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"/>
+            <line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/>
+            <line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+          <span>Component List</span>
+        </a>
+      </nav>
+
+      <!-- School Credits Pill -->
+      <div class="school-credits-pill">
+        <div class="school-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="school-details">
+          <div class="school-name">DAV Public School, Jyoti Nagar, East of Loni Road</div>
+          <div class="team-authors">Innovators: <strong>Divyansh Arora</strong> &amp; <strong>Neerav Kaushik</strong></div>
+        </div>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="nav-controls">
+        <div class="connection-status-pill" id="globalConnPill">
+          <span class="status-dot connected" id="globalStatusDot"></span>
+          <span class="status-text" id="globalStatusText">ROVER CONNECTED</span>
+        </div>
+
+        <button class="action-btn primary-btn" id="startMonitoringBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          <span>START MONITORING</span>
+        </button>
+
+        <button class="icon-toggle-btn" id="audioToggleBtn" title="Toggle Telemetry Beeps">
+          <svg id="audioIconOn" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+          <svg id="audioIconOff" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="1" y1="1" x2="23" y2="23"/>
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          </svg>
+        </button>
+
+        <button class="icon-toggle-btn" id="settingsBtn" title="Hardware &amp; IoT Configuration">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-wrapper">
+    <!-- SECTION 1: DASHBOARD OVERVIEW (Clean, Spacious, No Timer) -->
+    <section class="overview-section card-glass section-spacer">
+      <div class="overview-content">
+        <div class="overview-text">
+          <div class="system-intro-tag">
+            <span class="badge-icon">🌿</span>
+            <span>Intelligent Agricultural Telemetry</span>
+          </div>
+          <h2 class="overview-heading">Welcome to the AgriVision Smart Agriculture Monitoring System.</h2>
+          <p class="overview-description">
+            AgriVision is an intelligent agricultural rover designed to monitor environmental conditions, observe the surroundings and support smarter farming decisions through sensor technology and IoT connectivity.
+          </p>
+          <div class="overview-quick-links">
+            <a href="rover-3d.html" class="inline-link-btn">
+              <span>View 3D Rover Model &rarr;</span>
+            </a>
+            <a href="components.html" class="inline-link-btn secondary">
+              <span>Inspect Component List &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- System Telemetry Status Card (Clean replacement for timer) -->
+        <div class="system-status-card">
+          <div class="status-card-header">
+            <span class="status-card-label">MONITORING ENGINE</span>
+            <span class="status-card-badge" id="telemetryStateBadge">LIVE ACTIVE</span>
+          </div>
+          <div class="status-card-headline" id="telemetryModeHeadline">Continuous Telemetry</div>
+          <p class="status-card-desc">Real-time sensor polling active across all connected rover telemetry buses.</p>
+          <div class="status-card-meta">
+            <div class="meta-indicator">
+              <span class="pulse-emerald-dot"></span>
+              <span>ESP32 Wi-Fi Polling: <strong>1.0s</strong></span>
+            </div>
+            <div class="meta-indicator">
+              <span class="pulse-cyan-dot"></span>
+              <span>Cloud Link: <strong>Blynk IoT</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rover Hardware Specs Strip -->
+      <div class="telemetry-specs-grid">
+        <div class="spec-tile">
+          <span class="spec-label">SYSTEM STATUS</span>
+          <div class="spec-val-wrapper">
+            <span class="spec-pulse-amber"></span>
+            <span class="spec-value highlight-amber" id="systemStatusLabel">SIMULATION MODE</span>
+          </div>
+          <span class="spec-sub">Active Field Telemetry</span>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-label">DEVICE</span>
+          <div class="spec-value highlight-green">AgriVision Rover</div>
+          <span class="spec-sub">Autonomous Field Unit</span>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-label">CONTROLLER</span>
+          <div class="spec-value highlight-cyan">ESP32</div>
+          <span class="spec-sub">Dual-Core Xtensa LX6</span>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-label">IoT PLATFORM</span>
+          <div class="spec-value highlight-emerald">Blynk</div>
+          <span class="spec-sub">Cloud Telemetry Link</span>
+        </div>
+
+        <div class="spec-tile">
+          <span class="spec-label">MONITORING</span>
+          <div class="spec-val-wrapper">
+            <span class="spec-dot" id="monitoringDot"></span>
+            <span class="spec-value" id="monitoringStatusLabel">Active</span>
+          </div>
+          <span class="spec-sub" id="lastHeartbeat">Last ping: Just now</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2-Column Telemetry Grid with Spacious Layout -->
+    <div class="main-telemetry-layout">
+
+      <!-- Column 1: Environmental, Soil Moisture, & Obstacle Detection -->
+      <div class="telemetry-column-main">
+
+        <!-- SECTION A: Environmental Conditions (SIMULATED DATA) -->
+        <section class="dashboard-block section-spacer" id="environmentalSection">
+          <div class="block-header">
+            <div class="block-title-cluster">
+              <div class="block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                  <circle cx="12" cy="12" r="4"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="block-title">A. Environmental Conditions</h3>
+                <p class="block-subtitle">Microclimate &amp; Atmospheric Sensor Telemetry</p>
+              </div>
+            </div>
+            <div class="simulated-label-badge">
+              <span class="pill-dot"></span>
+              <span>SIMULATED DATA</span>
+            </div>
+          </div>
+
+          <div class="environmental-cards-grid">
+            <!-- Card 1: Temperature (DHT11) -->
+            <div class="sensor-card card-glass">
+              <div class="sensor-top">
+                <div class="sensor-info">
+                  <span class="sensor-name">Temperature</span>
+                  <span class="sensor-hw-tag">DHT11 Sensor (GPIO 4)</span>
+                </div>
+                <span class="data-tag simulated-tag">Simulated</span>
+              </div>
+              <div class="sensor-body">
+                <div class="sensor-main-reading">
+                  <span class="reading-num" id="tempValue">26.5</span>
+                  <span class="reading-unit">°C</span>
+                </div>
+                <div class="sensor-trend-visual">
+                  <canvas id="tempSparkline" width="120" height="34"></canvas>
+                </div>
+              </div>
+              <div class="sensor-footer">
+                <div class="sensor-status-indicator">
+                  <span class="status-marker normal"></span>
+                  <span class="status-text-sub">Optimal Crop Range (20–30°C)</span>
+                </div>
+                <span class="sensor-rate-note">Stable ~30-40s</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Humidity (DHT11) -->
+            <div class="sensor-card card-glass">
+              <div class="sensor-top">
+                <div class="sensor-info">
+                  <span class="sensor-name">Humidity</span>
+                  <span class="sensor-hw-tag">DHT11 Sensor (GPIO 4)</span>
+                </div>
+                <span class="data-tag simulated-tag">Simulated</span>
+              </div>
+              <div class="sensor-body">
+                <div class="sensor-main-reading">
+                  <span class="reading-num" id="humidityValue">58</span>
+                  <span class="reading-unit">%</span>
+                </div>
+                <div class="sensor-trend-visual">
+                  <canvas id="humiditySparkline" width="120" height="34"></canvas>
+                </div>
+              </div>
+              <div class="sensor-footer">
+                <div class="sensor-status-indicator">
+                  <span class="status-marker normal"></span>
+                  <span class="status-text-sub">Ideal Agronomic Range (50–70%)</span>
+                </div>
+                <span class="sensor-rate-note">Gradual ±1% step</span>
+              </div>
+            </div>
+
+            <!-- Card 3: MQ2 Gas Sensor -->
+            <div class="sensor-card card-glass">
+              <div class="sensor-top">
+                <div class="sensor-info">
+                  <span class="sensor-name">Combustible Gas &amp; Smoke</span>
+                  <span class="sensor-hw-tag">MQ2 Gas Sensor (GPIO 32)</span>
+                </div>
+                <span class="data-tag simulated-tag">Simulated</span>
+              </div>
+              <div class="sensor-body">
+                <div class="sensor-main-reading">
+                  <span class="reading-num" id="mq2Value">312</span>
+                  <span class="reading-unit">ADC</span>
+                </div>
+                <div class="sensor-trend-visual">
+                  <canvas id="mq2Sparkline" width="120" height="34"></canvas>
+                </div>
+              </div>
+              <div class="sensor-footer">
+                <div class="sensor-status-indicator">
+                  <span class="status-marker normal" id="mq2StatusDot"></span>
+                  <span class="status-text-sub" id="mq2StatusText">Baseline Levels (Safe)</span>
+                </div>
+                <span class="sensor-rate-note">Gradual Drift</span>
+              </div>
+            </div>
+
+            <!-- Card 4: MQ135 Air Quality Sensor -->
+            <div class="sensor-card card-glass">
+              <div class="sensor-top">
+                <div class="sensor-info">
+                  <span class="sensor-name">Air Quality Index</span>
+                  <span class="sensor-hw-tag">MQ135 Gas Sensor (GPIO 35)</span>
+                </div>
+                <span class="data-tag simulated-tag">Simulated</span>
+              </div>
+              <div class="sensor-body">
+                <div class="sensor-main-reading">
+                  <span class="reading-num" id="mq135Value">428</span>
+                  <span class="reading-unit">ADC</span>
+                </div>
+                <div class="sensor-trend-visual">
+                  <canvas id="mq135Sparkline" width="120" height="34"></canvas>
+                </div>
+              </div>
+              <div class="sensor-footer">
+                <div class="sensor-status-indicator">
+                  <span class="status-marker normal" id="mq135StatusDot"></span>
+                  <span class="status-text-sub" id="mq135StatusText">Clean Field Atmosphere</span>
+                </div>
+                <span class="sensor-rate-note">Gradual Drift</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION B: Soil Moisture (NO DATA FOUND) -->
+        <section class="dashboard-block section-spacer" id="soilSection">
+          <div class="block-header">
+            <div class="block-title-cluster">
+              <div class="block-icon no-data-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="block-title">B. Soil Moisture Telemetry</h3>
+                <p class="block-subtitle">Subsurface Hydration &amp; Moisture Probe</p>
+              </div>
+            </div>
+            <div class="no-data-badge">
+              <span class="no-data-dot"></span>
+              <span>HARDWARE OFFLINE</span>
+            </div>
+          </div>
+
+          <!-- Clean, spacious NO DATA FOUND card -->
+          <div class="no-data-card card-glass">
+            <div class="no-data-content">
+              <div class="no-data-illustration">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.6">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  <line x1="2" y1="2" x2="22" y2="22"/>
+                </svg>
+              </div>
+              <div class="no-data-text-group">
+                <h4 class="no-data-primary-heading">NO DATA FOUND</h4>
+                <p class="no-data-description">
+                  Soil moisture sensor telemetry is currently unlinked. The physical capacitive soil probe is awaiting live hardware connection on ESP32 GPIO 34 / Blynk Virtual Pin V1.
+                </p>
+                <div class="no-data-meta-row">
+                  <span class="meta-item">Hardware Channel: <strong>ESP32 ADC1_CH6 (Pin 34)</strong></span>
+                  <span class="meta-item">IoT Pin: <strong>Blynk V1</strong></span>
+                  <span class="meta-item status-flag">Status: <strong>No Telemetry Stream Detected</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION C: Obstacle Detection (NO DATA FOUND) -->
+        <section class="dashboard-block section-spacer" id="obstacleSection">
+          <div class="block-header">
+            <div class="block-title-cluster">
+              <div class="block-icon no-data-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                  <path d="M12 6a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/>
+                  <circle cx="12" cy="12" r="1"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="block-title">C. Obstacle Detection</h3>
+                <p class="block-subtitle">Dual Ultrasonic Spatial Navigation</p>
+              </div>
+            </div>
+            <div class="no-data-badge">
+              <span class="no-data-dot"></span>
+              <span>SENSORS IDLE</span>
+            </div>
+          </div>
+
+          <!-- Clean, spacious NO DATA FOUND card for Obstacle Detection -->
+          <div class="no-data-card card-glass">
+            <div class="no-data-content">
+              <div class="no-data-illustration">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M4.93 4.93l14.14 14.14"/>
+                  <path d="M12 8v4"/>
+                  <path d="M12 16h.01"/>
+                </svg>
+              </div>
+              <div class="no-data-text-group">
+                <h4 class="no-data-primary-heading">NO DATA FOUND</h4>
+                <p class="no-data-description">
+                  Ultrasonic distance sensors 1 &amp; 2: No active obstacle echo stream received. Ultrasonic transducers on Port (GPIO 5/18) and Starboard (GPIO 19/21) are waiting for rover rangefinder telemetry.
+                </p>
+                <div class="no-data-meta-row">
+                  <span class="meta-item">Sensor 1 (Port): <strong>NO DATA FOUND</strong></span>
+                  <span class="meta-item">Sensor 2 (Starboard): <strong>NO DATA FOUND</strong></span>
+                  <span class="meta-item status-flag">Echo Range: <strong>Standby / Unconnected</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Column 2: Camera Feed & System Activity Feed -->
+      <div class="telemetry-column-side">
+
+        <!-- SECTION D: Camera Surveillance (AGRI-VISION CAMERA FEED) -->
+        <section class="dashboard-block section-spacer" id="cameraSection">
+          <div class="block-header">
+            <div class="block-title-cluster">
+              <div class="block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="block-title">D. Camera Surveillance</h3>
+                <p class="block-subtitle">AGRI-VISION CAMERA FEED</p>
+              </div>
+            </div>
+            <div class="camera-status-pill" id="camStatusPill">
+              <span class="cam-dot offline" id="camDot"></span>
+              <span class="cam-label" id="camBadgeText">OFFLINE</span>
+            </div>
+          </div>
+
+          <div class="camera-display-container card-glass">
+            <!-- Viewport Screen -->
+            <div class="camera-viewport" id="camViewport">
+              <!-- Actual connected video / MJPEG image -->
+              <img id="cameraStreamImg" class="camera-live-stream hidden" alt="AgriVision Live Rover Feed" />
+              <video id="cameraWebcamVideo" class="camera-live-stream hidden" autoplay playsinline muted></video>
+
+              <!-- Offline Notice UI (Exact requirement: "Camera Offline — Waiting for ESP32-CAM connection.") -->
+              <div class="camera-offline-overlay" id="camOfflineOverlay">
+                <div class="radar-scan-graphic">
+                  <div class="scan-ring ring-1"></div>
+                  <div class="scan-ring ring-2"></div>
+                  <div class="scan-line"></div>
+                  <div class="crosshair-center">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8">
+                      <path d="M1 1l22 22M21 21H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2v7"/>
+                      <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="cam-offline-banner">
+                  <h4 class="cam-offline-primary">Camera Offline — Waiting for ESP32-CAM connection.</h4>
+                  <p class="cam-offline-detail">
+                    Awaiting MJPEG stream broadcast on local IP / Hotspot subnet. Actual rover camera feed will render directly once stream link responds.
+                  </p>
+                  <div class="camera-connect-actions">
+                    <button class="cam-btn primary" id="connectCameraBtn">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6M1 20v-6h6"/>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                      </svg>
+                      <span>Connect Hardware Stream</span>
+                    </button>
+                    <button class="cam-btn secondary" id="webcamToggleBtn">
+                      <span>Use Laptop Webcam as Rover Feed</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- HUD Viewport Overlay with Crosshairs and Info -->
+              <div class="camera-hud-overlay">
+                <div class="hud-top">
+                  <span class="hud-tag">FEED: ESP32-CAM (OV2640)</span>
+                  <span class="hud-fps" id="hudFpsText">0.0 FPS</span>
+                </div>
+                <div class="hud-bottom">
+                  <span class="hud-tag">AGRI-VISION OPTICAL TELEMETRY</span>
+                  <span class="hud-time" id="hudClock">--:--:--</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Camera Stream Controls -->
+            <div class="camera-controls-bar">
+              <div class="stream-url-preview">
+                <span class="url-label">Target Stream:</span>
+                <span class="url-text" id="streamUrlDisplay">http://192.168.4.1:81/stream</span>
+              </div>
+              <button class="mini-btn" id="editCamUrlBtn">Configure URL</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION E: System Activity & Alerts -->
+        <section class="dashboard-block section-spacer" id="systemActivitySection">
+          <div class="block-header">
+            <div class="block-title-cluster">
+              <div class="block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="block-title">E. System Activity &amp; Alerts</h3>
+                <p class="block-subtitle">Telemetry Log, System Status &amp; Real-time Events</p>
+              </div>
+            </div>
+            <div class="alert-filter-badges">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="hardware">Hardware</button>
+              <button class="filter-btn" data-filter="simulated">Simulated</button>
+            </div>
+          </div>
+
+          <!-- Connection Status Card -->
+          <div class="activity-summary-card card-glass">
+            <div class="summary-metric">
+              <span class="summary-label">ROVER LINK</span>
+              <span class="summary-val connected" id="roverLinkStatusText">ONLINE</span>
+            </div>
+            <div class="summary-metric">
+              <span class="summary-label">POLLING MODE</span>
+              <span class="summary-val highlight-emerald">CONTINUOUS</span>
+            </div>
+            <div class="summary-metric">
+              <span class="summary-label">LAST TELEMETRY</span>
+              <span class="summary-val mono-font" id="lastTelemetryClock">18:41:55</span>
+            </div>
+            <div class="summary-metric">
+              <span class="summary-label">LATENCY</span>
+              <span class="summary-val mono-font" id="roverLatencyVal">18 ms</span>
+            </div>
+          </div>
+
+          <!-- Interactive Alerts Log Container -->
+          <div class="alerts-stream-container card-glass" id="alertsStream">
+            <!-- Notification cards are populated here -->
+          </div>
+
+          <!-- Interactive Field Triggers for Testing -->
+          <div class="exhibition-tools-row">
+            <span class="tools-label">Field Test Simulation:</span>
+            <button class="pill-action-btn" id="toggleRoverConnBtn">Simulate Rover Disconnect</button>
+            <button class="pill-action-btn" id="triggerGasAlertBtn">Simulate Gas Spike</button>
+            <button class="pill-action-btn" id="triggerClearBtn">Clear Log</button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- SECTION 4: System Startup Initialization Modal Overlay (No Countdown Timer) -->
+  <div class="modal-overlay hidden" id="initializationModal">
+    <div class="init-dialog card-glass">
+      <div class="init-header">
+        <div class="init-shield">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </div>
+        <h2 class="init-title">INITIALIZING AGRIVISION SYSTEM</h2>
+        <p class="init-subtitle">DAV Public School, Jyoti Nagar • Telemetry Handshake Sequence</p>
+      </div>
+
+      <!-- 5 Step Initialization Sequence -->
+      <div class="init-steps-list">
+        <div class="init-step-item" id="step1">
+          <div class="step-indicator"><span class="step-dot"></span></div>
+          <div class="step-label">Initializing sensor dashboard</div>
+        </div>
+        <div class="init-step-item" id="step2">
+          <div class="step-indicator"><span class="step-dot"></span></div>
+          <div class="step-label">Establishing Wi-Fi connection</div>
+        </div>
+        <div class="init-step-item" id="step3">
+          <div class="step-indicator"><span class="step-dot"></span></div>
+          <div class="step-label">Connecting to rover</div>
+        </div>
+        <div class="init-step-item" id="step4">
+          <div class="step-indicator"><span class="step-dot"></span></div>
+          <div class="step-label">Checking camera availability</div>
+        </div>
+        <div class="init-step-item" id="step5">
+          <div class="step-indicator"><span class="step-dot"></span></div>
+          <div class="step-label">Preparing telemetry interface</div>
+        </div>
+      </div>
+
+      <div class="init-progress-bar">
+        <div class="init-bar-fill" id="initProgressFill"></div>
+      </div>
+
+      <div class="init-modal-footer">
+        <button class="action-btn secondary-btn" id="cancelInitBtn">Cancel</button>
+        <button class="action-btn primary-btn hidden" id="enterDashboardBtn">Launch Telemetry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Network Error Modal (Rover Disconnected) -->
+  <div class="modal-overlay hidden" id="networkErrorModal">
+    <div class="error-dialog card-glass">
+      <div class="error-icon-box">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <h2 class="error-title">NETWORK NOT CONNECTED</h2>
+      <p class="error-message">
+        AgriVision cannot communicate with the rover. Move the rover to an open area or closer to the Wi-Fi hotspot, check the power supply and reconnect.
+      </p>
+      <div class="error-diagnostics-box">
+        <div class="diag-line"><span>Target Host:</span> <span class="mono-font" id="errTargetHost">192.168.4.1 (ESP32 AP)</span></div>
+        <div class="diag-line"><span>Ping Status:</span> <span class="highlight-red">Host Unreachable / Timed Out</span></div>
+        <div class="diag-line"><span>Monitoring State:</span> <span class="highlight-amber">Telemetry Communication Paused</span></div>
+      </div>
+      <div class="error-actions">
+        <button class="action-btn primary-btn retry-btn" id="retryConnectionBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+          <span>RETRY CONNECTION</span>
+        </button>
+        <button class="action-btn secondary-btn" id="dismissErrorBtn">Dismiss &amp; Enter Offline Mode</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings / IoT Configuration Modal -->
+  <div class="modal-overlay hidden" id="configModal">
+    <div class="config-dialog card-glass">
+      <div class="config-header">
+        <h3 class="config-title">Hardware &amp; IoT Link Configuration</h3>
+        <button class="close-modal-btn" id="closeConfigBtn">&times;</button>
+      </div>
+      <div class="config-body">
+        <div class="config-group">
+          <label class="config-label">Rover Wi-Fi / AP Host IP</label>
+          <input type="text" id="configRoverIp" class="config-input" value="192.168.4.1">
+          <span class="config-hint">Default ESP32 SoftAP address or router-assigned DHCP IP.</span>
+        </div>
+
+        <div class="config-group">
+          <label class="config-label">ESP32-CAM Stream URL</label>
+          <input type="text" id="configCamUrl" class="config-input" value="http://192.168.4.1:81/stream">
+          <span class="config-hint">MJPEG streaming port from CameraWebServer sketch.</span>
+        </div>
+
+        <div class="config-group">
+          <label class="config-label">Blynk IoT Auth Token</label>
+          <input type="text" id="configBlynkToken" class="config-input" placeholder="Enter Blynk Token (Optional)">
+          <span class="config-hint">Directly synchronizes Soil Moisture and hardware telemetry via Blynk Cloud REST API.</span>
+        </div>
+
+        <div class="config-group">
+          <label class="config-label">Blynk Soil Moisture Virtual Pin</label>
+          <input type="text" id="configBlynkPin" class="config-input" value="V1">
+        </div>
+
+        <div class="config-checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="configAutoReconnect" checked>
+            <span>Auto-reconnect when rover signal is detected</span>
+          </label>
+        </div>
+      </div>
+      <div class="config-footer">
+        <button class="action-btn secondary-btn" id="cancelConfigBtn">Cancel</button>
+        <button class="action-btn primary-btn" id="saveConfigBtn">Save &amp; Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: Footer -->
+  <footer class="system-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand-meta">
+          <h4 class="footer-title">AGRI-VISION | SMART AGRICULTURE ROVER</h4>
+          <p class="footer-motto">"Technology for Farmers. Innovation for Tomorrow."</p>
+        </div>
+        <div class="footer-authors-box">
+          <div class="footer-school">DAV Public School, Jyoti Nagar, East of Loni Road</div>
+          <div class="footer-team">Developed by <strong>DIVYANSH ARORA &amp; NEERAV KAUSHIK</strong></div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-note-row">
+        <p class="footer-data-note">
+          <strong>Data note:</strong> Some dashboard readings are software-generated simulations. Soil moisture and camera information are displayed from connected hardware.
+        </p>
+        <div class="footer-status-pill">
+          <span>ESP32 • Blynk IoT • DHT11 • MQ2 • MQ135 • HC-SR04 • OV2640</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

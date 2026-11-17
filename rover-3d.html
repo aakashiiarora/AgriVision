@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriVision Rover 3D Model — AgriVision 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Three.js CDN for Interactive 3D WebGL Rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+  <div class="tech-grid-bg"></div>
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand-cluster">
+        <a href="index.html" class="brand-link">
+          <div class="logo-shield">
+            <svg viewBox="0 0 36 36" fill="none" class="rover-logo" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="10" fill="url(#brandGrad)" />
+              <path d="M18 7C12.5 7 8 11.5 8 17C8 22.5 13 27 18 29C23 27 28 22.5 28 17C28 11.5 23.5 7 18 7Z" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M18 12V24M12 18H24" stroke="#34d399" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="18" cy="18" r="3.5" fill="#10b981"/>
+              <circle cx="10" cy="27" r="2" fill="#047857"/>
+              <circle cx="26" cy="27" r="2" fill="#047857"/>
+              <defs>
+                <linearGradient id="brandGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#064e3b" />
+                  <stop offset="1" stop-color="#022c22" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="pulse-indicator live-pulse"></div>
+          </div>
+        </a>
+        <div class="brand-text">
+          <div class="brand-title-wrap">
+            <h1 class="brand-title">AGRIVISION</h1>
+            <span class="hub-tag">3D MODEL VIEWER</span>
+          </div>
+          <p class="tagline">Smart Farming. A Sustainable Future.</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-links-cluster">
+        <a href="index.html" class="nav-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9"/>
+            <rect x="14" y="3" width="7" height="5"/>
+            <rect x="14" y="12" width="7" height="9"/>
+            <rect x="3" y="16" width="7" height="5"/>
+          </svg>
+          <span>Telemetry Hub</span>
+        </a>
+        <a href="rover-3d.html" class="nav-tab active">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+          <span>3D Rover Model</span>
+        </a>
+        <a href="components.html" class="nav-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"/>
+            <line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/>
+            <line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+          <span>Component List</span>
+        </a>
+      </nav>
+
+      <!-- School Credits -->
+      <div class="school-credits-pill">
+        <div class="school-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="school-details">
+          <div class="school-name">DAV Public School, Jyoti Nagar, East of Loni Road</div>
+          <div class="team-authors">Innovators: <strong>Divyansh Arora</strong> &amp; <strong>Neerav Kaushik</strong></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-wrapper">
+    <!-- Header Section with spacious layout -->
+    <section class="page-intro-header card-glass section-spacer">
+      <div class="page-intro-content">
+        <div class="system-intro-tag">
+          <span class="badge-icon">🤖</span>
+          <span>Robotics Engineering &amp; Spatial CAD</span>
+        </div>
+        <h2 class="page-title">AgriVision Autonomous Agricultural Rover — 3D Architecture</h2>
+        <p class="page-subtitle">
+          Interactive 3D model and physical chassis architecture of the AgriVision Rover. Rotate, inspect individual sensor subsystems, examine ground clearance, and explore the agricultural sensor payload.
+        </p>
+      </div>
+
+      <div class="rover-status-badges">
+        <div class="badge-item">
+          <span class="badge-label">CHASSIS PLATFORM</span>
+          <span class="badge-value highlight-green">4WD Rocker-Bogie</span>
+        </div>
+        <div class="badge-item">
+          <span class="badge-label">DRIVE SYSTEM</span>
+          <span class="badge-value highlight-cyan">4x DC High Torque</span>
+        </div>
+        <div class="badge-item">
+          <span class="badge-label">PAYLOAD CAPACITY</span>
+          <span class="badge-value highlight-emerald">3.5 kg Field Kit</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main 3D Model Stage & Interactive Component Inspector Grid -->
+    <div class="rover-3d-layout section-spacer">
+
+      <!-- 3D Canvas Viewport Box -->
+      <div class="viewport-3d-card card-glass">
+        <div class="viewport-header">
+          <div class="viewport-title-group">
+            <h3 class="viewport-title">Interactive 3D Rover Model</h3>
+            <span class="viewport-instructions">Left-click &amp; drag to rotate • Scroll to zoom • Right-click to pan</span>
+          </div>
+          <div class="viewport-controls-toolbar">
+            <button class="view-ctrl-btn" id="btnResetView" title="Reset View Angle">Reset View</button>
+            <button class="view-ctrl-btn" id="btnToggleRotate" title="Toggle Auto-Rotation">Auto-Rotate: ON</button>
+            <button class="view-ctrl-btn" id="btnToggleWireframe" title="Toggle Wireframe Mode">Wireframe</button>
+          </div>
+        </div>
+
+        <!-- WebGL Canvas Container -->
+        <div class="canvas-3d-container" id="canvas3dContainer">
+          <canvas id="rover3dCanvas"></canvas>
+          
+          <!-- Viewport HUD Overlay -->
+          <div class="viewport-hud">
+            <div class="hud-item"><span class="hud-dot active"></span> 3D WebGL Engine Active</div>
+            <div class="hud-item" id="cameraAngleText">Pitch: 22° | Yaw: 45°</div>
+          </div>
+        </div>
+
+        <div class="viewport-footer">
+          <div class="subsystem-selector-chips">
+            <span class="chips-label">Highlight Subsystem:</span>
+            <button class="subsystem-chip active" data-part="all">Complete Rover</button>
+            <button class="subsystem-chip" data-part="chassis">Chassis &amp; Motors</button>
+            <button class="subsystem-chip" data-part="esp32">ESP32 Controller</button>
+            <button class="subsystem-chip" data-part="camera">ESP32-CAM Mast</button>
+            <button class="subsystem-chip" data-part="sonar">Ultrasonic Eyes</button>
+            <button class="subsystem-chip" data-part="soil">Soil Probe</button>
+            <button class="subsystem-chip" data-part="solar">Solar Panel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Component Inspector & Specifications Sidebar -->
+      <div class="inspector-sidebar">
+
+        <!-- Selected Part Card -->
+        <div class="inspector-card card-glass section-spacer">
+          <div class="inspector-card-header">
+            <span class="inspector-badge">COMPONENT INSPECTION</span>
+            <h4 class="inspector-part-name" id="inspectorPartTitle">AgriVision 4WD Autonomous Field Unit</h4>
+          </div>
+          <div class="inspector-body">
+            <p class="inspector-part-desc" id="inspectorPartDesc">
+              The AgriVision Rover is an autonomous field monitoring robot built for smart farming. It carries an ESP32 dual-core microcontroller, an ESP32-CAM optical surveillance mast, dual front obstacle avoidance sensors, atmospheric environmental sensors, and a deep soil moisture probe.
+            </p>
+            <div class="spec-attribute-list" id="inspectorPartSpecs">
+              <div class="attr-row"><span>Ground Clearance:</span> <strong>65 mm</strong></div>
+              <div class="attr-row"><span>Turning Radius:</span> <strong>0 cm (Differential Pivot)</strong></div>
+              <div class="attr-row"><span>Wheel Diameter:</span> <strong>85 mm High-Grip Rubber</strong></div>
+              <div class="attr-row"><span>Telemetry Protocol:</span> <strong>Blynk IoT / SoftAP Wi-Fi</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Component Links Card -->
+        <div class="inspector-card card-glass">
+          <div class="inspector-card-header">
+            <span class="inspector-badge">ONBOARD SENSORS</span>
+            <h4 class="inspector-card-title">Hardware Telemetry Nodes</h4>
+          </div>
+          <div class="sensor-nodes-list">
+            <div class="sensor-node-row" data-part="esp32">
+              <div class="node-icon-box">⚡</div>
+              <div class="node-meta">
+                <span class="node-name">ESP32 Core Microcontroller</span>
+                <span class="node-pin">Dual-Core 240MHz • 520KB SRAM</span>
+              </div>
+            </div>
+
+            <div class="sensor-node-row" data-part="camera">
+              <div class="node-icon-box">📷</div>
+              <div class="node-meta">
+                <span class="node-name">ESP32-CAM Optical Mast</span>
+                <span class="node-pin">OV2640 Lens • Port 81 Stream</span>
+              </div>
+            </div>
+
+            <div class="sensor-node-row" data-part="soil">
+              <div class="node-icon-box">🌾</div>
+              <div class="node-meta">
+                <span class="node-name">Capacitive Soil Moisture Probe</span>
+                <span class="node-pin">ESP32 GPIO 34 (ADC1_CH6)</span>
+              </div>
+            </div>
+
+            <div class="sensor-node-row" data-part="sonar">
+              <div class="node-icon-box">📡</div>
+              <div class="node-meta">
+                <span class="node-name">Dual HC-SR04 Ultrasonic Sonars</span>
+                <span class="node-pin">GPIO 5/18 (Port) &amp; GPIO 19/21 (Starboard)</span>
+              </div>
+            </div>
+
+            <div class="sensor-node-row" data-part="solar">
+              <div class="node-icon-box">☀️</div>
+              <div class="node-meta">
+                <span class="node-name">Solar Array &amp; 3S Battery</span>
+                <span class="node-pin">11.1V 2600mAh Li-ion + 5V Buck</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Photorealistic Field Render Showcase Section (Added Image) -->
+    <section class="rover-showcase-section card-glass section-spacer">
+      <div class="showcase-content">
+        <div class="showcase-text">
+          <div class="system-intro-tag">
+            <span class="badge-icon">🌾</span>
+            <span>Real-World Agricultural Deployment</span>
+          </div>
+          <h3 class="showcase-title">AgriVision Rover Field Prototype &amp; Operational Layout</h3>
+          <p class="showcase-desc">
+            Designed specifically for agricultural row-crop surveillance and microclimate observation. The rover navigates between crop rows without disturbing root systems, measuring ambient atmospheric conditions and subsurface soil hydration in real time.
+          </p>
+
+          <div class="feature-bullets">
+            <div class="feature-bullet">
+              <span class="bullet-check">✓</span>
+              <div>
+                <strong>All-Terrain Rocker Suspension:</strong> Absorbs vibrations and uneven furrows in tilled soil and clay.
+              </div>
+            </div>
+            <div class="feature-bullet">
+              <span class="bullet-check">✓</span>
+              <div>
+                <strong>Obstacle Echo Navigation:</strong> Dual ultrasonic transducers detect crop stalks, irrigation pipes, and field fences.
+              </div>
+            </div>
+            <div class="feature-bullet">
+              <span class="bullet-check">✓</span>
+              <div>
+                <strong>Subsurface Moisture Probe:</strong> Extending capacitive sensor measures volumetric water content directly at the root zone.
+              </div>
+            </div>
+            <div class="feature-bullet">
+              <span class="bullet-check">✓</span>
+              <div>
+                <strong>Live Video Surveillance:</strong> Elevated camera mast provides real-time crop disease inspection and visual canopy tracking.
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-cta">
+            <a href="components.html" class="action-btn primary-btn">
+              <span>View Full Component Specifications &rarr;</span>
+            </a>
+            <a href="index.html" class="action-btn secondary-btn">
+              <span>Return to Telemetry Hub</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="showcase-image-wrapper">
+          <img src="rover-render.jpg" alt="AgriVision Smart Agriculture Rover in Field" class="rover-showcase-image" />
+          <div class="image-caption">
+            <span>Figure 1.0: AgriVision Autonomous Rover deployed in crop field with ESP32-CAM vision and telemetry suite.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Blueprint & Dimensions Table (Spacious) -->
+    <section class="blueprint-section card-glass section-spacer">
+      <div class="block-header">
+        <div class="block-title-cluster">
+          <div class="block-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="3"/>
+              <path d="M7 2v20M17 2v20M2 12h20"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="block-title">Engineering Specifications &amp; Dimensions</h3>
+            <p class="block-subtitle">AgriVision 2.0 Mechanical and Electrical Parameters</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="specs-table-wrapper">
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Specification</th>
+              <th>Function / Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dimensions (L × W × H)</strong></td>
+              <td class="mono-font">280 mm × 220 mm × 195 mm</td>
+              <td>Compact form factor to fit within standard crop furrow spacing (300mm).</td>
+            </tr>
+            <tr>
+              <td><strong>Chassis Material</strong></td>
+              <td>Laser-cut Acrylic &amp; 3D-Printed ABS</td>
+              <td>Weather-resistant, lightweight, and electrically non-conductive.</td>
+            </tr>
+            <tr>
+              <td><strong>Ground Clearance</strong></td>
+              <td class="mono-font">65 mm</td>
+              <td>High clearance avoids wet mud clods and agricultural mulch.</td>
+            </tr>
+            <tr>
+              <td><strong>Drive Actuators</strong></td>
+              <td>4× 12V High-Torque Geared DC Motors</td>
+              <td>Operating through L298N Dual H-Bridge with PWM speed control.</td>
+            </tr>
+            <tr>
+              <td><strong>Power Source</strong></td>
+              <td>3S 18650 Li-ion Battery (11.1V Nominal / 12.6V Peak)</td>
+              <td>2600 mAh capacity providing 3.5+ hours continuous field telemetry.</td>
+            </tr>
+            <tr>
+              <td><strong>Auxiliary Solar Harvester</strong></td>
+              <td>6V 2W Monocrystalline Panel</td>
+              <td>Trickle charging buffer for microcontrollers during outdoor daylight operation.</td>
+            </tr>
+            <tr>
+              <td><strong>Communication Range</strong></td>
+              <td class="mono-font">150 meters (SoftAP) / Unlimited (Blynk Cloud)</td>
+              <td>Wi-Fi 802.11 b/g/n 2.4GHz with internal PCB trace antenna.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="system-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand-meta">
+          <h4 class="footer-title">AGRI-VISION | SMART AGRICULTURE ROVER</h4>
+          <p class="footer-motto">"Technology for Farmers. Innovation for Tomorrow."</p>
+        </div>
+        <div class="footer-authors-box">
+          <div class="footer-school">DAV Public School, Jyoti Nagar, East of Loni Road</div>
+          <div class="footer-team">Developed by <strong>DIVYANSH ARORA &amp; NEERAV KAUSHIK</strong></div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-note-row">
+        <p class="footer-data-note">
+          <strong>Data note:</strong> Some dashboard readings are software-generated simulations. Soil moisture and camera information are displayed from connected hardware.
+        </p>
+        <div class="footer-status-pill">
+          <span>ESP32 • Blynk IoT • DHT11 • MQ2 • MQ135 • HC-SR04 • OV2640</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 3D WebGL Rover Model Script -->
+  <script src="rover-3d.js"></script>
+</body>
+</html>
